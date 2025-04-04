@@ -35,25 +35,26 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <Link href="/" className="font-bold text-2xl ml-10">
+          <Link href="/" className="ml-10">
             <Image src="/carwo_logo.svg" alt="logo" width={125} height={125} />
           </Link>
         </div>
 
-        <nav className="hidden md:flex gap-6">
+        {/* Desktop nav */}
+        <nav className="hidden md:flex gap-2 items-center">
           {navItems.map((item) => (
-            <div key={item.name} className="relative">
+            <div key={item.name}>
               {item.section ? (
                 <button
                   onClick={() => scrollToSection(item.section!)}
-                  className="text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded"
+                  className="inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-4 py-2 rounded"
                 >
                   {item.name}
                 </button>
               ) : (
                 <Link
                   href={item.href}
-                  className="text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded"
+                  className="inline-flex items-center justify-center text-sm font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-4 py-2 rounded"
                 >
                   {item.name}
                 </Link>
@@ -62,6 +63,7 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Mobile nav */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="outline" size="icon">
@@ -76,14 +78,14 @@ export default function Navbar() {
                   {item.section ? (
                     <button
                       onClick={() => scrollToSection(item.section!)}
-                      className="text-lg font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded w-full text-left"
+                      className="text-lg font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-4 py-2 rounded w-full text-left"
                     >
                       {item.name}
                     </button>
                   ) : (
                     <Link
                       href={item.href}
-                      className="text-lg font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-3 py-2 rounded block"
+                      className="text-lg font-medium transition-colors hover:text-primary-foreground hover:bg-primary px-4 py-2 rounded block"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}
@@ -98,4 +100,3 @@ export default function Navbar() {
     </header>
   )
 }
-
