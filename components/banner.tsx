@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 const banners = [
   {
@@ -65,9 +66,14 @@ export default function Banner() {
                 <div className="max-w-xl text-white">
                   <h1 className="text-3xl md:text-5xl font-bold mb-4">{banner.title}</h1>
                   <p className="text-lg md:text-xl mb-6">{banner.description}</p>
-                  <Button asChild size="lg" className="bg-black text-white hover:bg-white hover:text-black">
-                    <a href={banner.link}>{banner.cta}</a>
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button asChild size="lg" className="bg-black text-white hover:bg-white hover:text-black">
+                      <Link href="/#puntos-de-venta">Quiero comprar</Link>
+                    </Button>
+                    <Button asChild size="lg" className="bg-white text-black hover:bg-black hover:text-white">
+                      <Link href="/#contacto?tipo=vendedor">Quiero vender</Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

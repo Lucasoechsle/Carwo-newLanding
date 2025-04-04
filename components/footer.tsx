@@ -5,8 +5,8 @@ export default function Footer() {
 
   return (
     <footer className="w-full border-t bg-background">
-      <div className="container py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="container mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div>
             <h3 className="text-lg font-bold mb-4">CARWO</h3>
             <p className="text-muted-foreground">Soluciones en generación y almacenamiento de energía.</p>
@@ -17,7 +17,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/#empresa" className="text-muted-foreground hover:text-black transition-colors">
-                  Nuestra Empresa
+                  Nosotros
                 </Link>
               </li>
               <li>
@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
+        <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground max-w-6xl mx-auto">
           <p>© {currentYear} Carwo. Todos los derechos reservados.</p>
         </div>
       </div>

@@ -1,14 +1,10 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
 import { Mail, Phone, MapPin } from "lucide-react"
 
 export default function ContactForm() {
@@ -17,120 +13,108 @@ export default function ContactForm() {
     email: "",
     phone: "",
     message: "",
+    type: "cliente", // Por defecto es cliente
   })
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  useEffect(() => {
+    // Verificar si hay un tipo en la URL
+    const urlParams = new URLSearchParams(window.location.search)
+    const tipo = urlParams.get("tipo")
+    if (tipo === "vendedor") {
+      setFormData(prev => ({ ...prev, type: "vendedor" }))
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
+    // Aquí iría la lógica para enviar el formulario
+    console.log("Formulario enviado:", formData)
+  }
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    toast({
-      title: "Formulario enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    })
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    })
-
-    setIsSubmitting(false)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
   return (
-    <section id="contacto" className="w-full py-16 bg-slate-50">
+    <section id="contacto" className="w-full py-16">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Contacto</h2>
           <div className="w-20 h-1 bg-black mx-auto mb-6"></div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            ¿Tiene alguna pregunta o necesita asesoramiento? No dude en contactarnos.
+            {formData.type === "vendedor" 
+              ? "Complete el formulario si desea convertirse en distribuidor de nuestros productos"
+              : "Complete el formulario y nos pondremos en contacto con usted a la brevedad"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Envíenos un mensaje</CardTitle>
-                <CardDescription>
-                  Complete el formulario y nos pondremos en contacto con usted lo antes posible.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Nombre completo</Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        placeholder="Su nombre"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Correo electrónico</Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        placeholder="ejemplo@correo.com"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Nombre
+              </label>
+              <Input
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                placeholder="Su nombre completo"
+              />
+            </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Teléfono</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      placeholder="Su número de teléfono"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                  </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email
+              </label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="su@email.com"
+              />
+            </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Mensaje</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      placeholder="¿En qué podemos ayudarle?"
-                      rows={5}
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                    />
-                  </div>
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                Teléfono
+              </label>
+              <Input
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                placeholder="+123 456 7890"
+              />
+            </div>
 
-                  <Button
-                    type="submit"
-                    className="w-full bg-black text-white hover:bg-white hover:text-black border border-black"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Mensaje
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                placeholder={formData.type === "vendedor" 
+                  ? "Cuéntenos sobre su experiencia en el sector y por qué desea ser distribuidor"
+                  : "¿En qué podemos ayudarle?"}
+                className="min-h-[150px]"
+              />
+            </div>
+
+            <Button type="submit" size="lg" className="w-full bg-black text-white hover:bg-white hover:text-black">
+              Enviar Mensaje
+            </Button>
+          </form>
 
           <div>
             <Card>
