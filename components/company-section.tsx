@@ -6,7 +6,7 @@ export default function CompanySection() {
     <section id="empresa" className="w-full py-16 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Nuestra Empresa</h2>
+          <h2 className="text-3xl font-bold mb-4">Nosotros</h2>
           <div className="w-20 h-1 bg-black mx-auto"></div>
         </div>
 

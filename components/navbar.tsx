@@ -25,7 +25,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Inicio", href: "/", section: null },
-    { name: "Nuestra Empresa", href: "/#empresa", section: "empresa" },
+    { name: "Nosotros", href: "/#empresa", section: "empresa" },
     { name: "Productos Destacados", href: "/#productos", section: "productos" },
     { name: "Productos", href: "/productos", section: null },
     { name: "Contacto", href: "/#contacto", section: "contacto" },
