@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import ProductFilter from "@/components/product-filter"
 import ProductGrid from "@/components/product-grid"
@@ -21,4 +20,3 @@ export default function ProductsPageClient() {
     </main>
   )
 }
-

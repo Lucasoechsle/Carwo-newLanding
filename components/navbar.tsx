@@ -39,8 +39,6 @@ export default function Navbar() {
             <Image src="/carwo_logo.svg" alt="logo" width={125} height={125} />
           </Link>
         </div>
-
-        {/* Desktop nav */}
         <nav className="hidden md:flex gap-2 items-center">
           {navItems.map((item) => (
             <div key={item.name}>
@@ -62,8 +60,6 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
-
-        {/* Mobile nav */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="outline" size="icon">

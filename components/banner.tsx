@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -86,7 +85,6 @@ export default function Banner() {
       >
         {banners.map((banner) => (
           <div key={banner.id} className="relative min-w-full h-full">
-            {/* Mobile Image */}
             <Image
               src={banner.mobileImage}
               alt={banner.title}
@@ -94,7 +92,6 @@ export default function Banner() {
               priority
               className="object-cover block md:hidden"
             />
-            {/* Desktop Image */}
             <Image
               src={banner.desktopImage}
               alt={banner.title}
@@ -102,7 +99,6 @@ export default function Banner() {
               priority
               className="object-cover hidden md:block"
             />
-
             <div className="absolute inset-0 bg-black/40 flex items-center">
               <div className="container mx-auto px-4">
                 <div className="max-w-xl text-white">
@@ -124,8 +120,6 @@ export default function Banner() {
           </div>
         ))}
       </div>
-
-      {/* Controls */}
       <Button
         variant="outline"
         size="icon"
@@ -144,8 +138,6 @@ export default function Banner() {
         <ChevronRight className="h-6 w-6" />
         <span className="sr-only">Siguiente</span>
       </Button>
-
-      {/* Dots */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {banners.map((_, index) => (
           <button

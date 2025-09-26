@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -14,7 +13,6 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
     categories: true,
   })
 
-  // Extraer categorías únicas del JSON de productos
   const categories = useMemo(() => {
     const uniqueCategories = Array.from(new Set(productosData.map((product) => product.category)))
     return uniqueCategories.map((category) => ({
@@ -60,7 +58,6 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
           {isFilterVisible ? "Ocultar Filtros" : "Mostrar Filtros"}
         </Button>
       </div>
-
       <div className={`${isFilterVisible ? "block" : "hidden"} md:block w-full md:w-64 bg-white p-4 rounded-lg border`}>
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-semibold">Filtros</h2>
@@ -74,9 +71,7 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
             <span className="sr-only">Cerrar</span>
           </Button>
         </div>
-
         <div className="space-y-6">
-          {/* Categorías */}
           <div className="border-b pb-4">
             <button
               className="flex justify-between items-center w-full text-left font-medium mb-2"
@@ -85,7 +80,6 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
               Categorías
               {expandedSections.categories ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </button>
-
             {expandedSections.categories && (
               <div className="space-y-2 mt-2 max-h-[300px] overflow-y-auto pr-2">
                 {categories.map((category) => (
@@ -103,7 +97,6 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
               </div>
             )}
           </div>
-
           <Button
             className="w-full bg-black text-white hover:bg-white hover:text-black border border-black"
             onClick={applyFilters}
@@ -115,4 +108,3 @@ export default function ProductFilter({ onFilterChange }: { onFilterChange: (cat
     </div>
   )
 }
-

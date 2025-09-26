@@ -1,8 +1,6 @@
 "use client"
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-// Datos de ejemplo de distribuidores
 const distributors = [
   {
     id: 1,
@@ -38,15 +36,12 @@ export default function DistributorsMap() {
             Encuentre el distribuidor más cercano a su ubicación
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="h-[500px] bg-gray-100 rounded-lg">
-            {/* Aquí irá el mapa interactivo */}
             <div className="w-full h-full flex items-center justify-center">
               <p className="text-muted-foreground">Mapa interactivo de distribuidores</p>
             </div>
           </div>
-
           <div className="space-y-4">
             {distributors.map((distributor) => (
               <Card key={distributor.id}>

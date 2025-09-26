@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,7 +11,6 @@ import productosData from "@/data/productos-data"
 export default function ProductGrid({ filteredCategories }: { filteredCategories: string[] }) {
   const [searchTerm, setSearchTerm] = useState("")
 
-  // Filtrar productos por término de búsqueda y categorías
   const filteredProducts = productosData.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,7 +36,6 @@ export default function ProductGrid({ filteredCategories }: { filteredCategories
           />
         </div>
       </div>
-
       {filteredProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product) => (
@@ -77,4 +74,3 @@ export default function ProductGrid({ filteredCategories }: { filteredCategories
     </div>
   )
 }
-

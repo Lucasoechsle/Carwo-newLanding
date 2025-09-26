@@ -20,7 +20,6 @@ export default function ProductoDetalle({ params }: { params: { id: string } }) 
           Volver a Productos
         </Button>
       </Link>
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="relative aspect-square w-full max-w-xl mx-auto">
           <Image
@@ -31,7 +30,6 @@ export default function ProductoDetalle({ params }: { params: { id: string } }) 
             priority
           />
         </div>
-
         <div>
           <h1 className="text-3xl font-bold mb-4">{producto.name}</h1>
           <div className="mb-4 inline-block px-3 py-1 bg-gray-100 text-sm rounded-full">{producto.category}</div>
@@ -43,4 +41,3 @@ export default function ProductoDetalle({ params }: { params: { id: string } }) 
     </div>
   )
 }
-

@@ -15,7 +15,6 @@ export default function FeaturedProducts() {
             Descubra nuestra selección de productos destacados en generación y almacenamiento de energía.
           </p>
         </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {productosDestacadosData.map((producto) => (
             <Card key={producto.id} className="overflow-hidden h-full flex flex-col">
@@ -44,7 +43,6 @@ export default function FeaturedProducts() {
             </Card>
           ))}
         </div>
-
         <div className="mt-12 text-center">
           <Button asChild size="lg" variant="outline" className="hover:bg-black hover:text-white">
             <Link href="/productos">Ver Todos los Productos</Link>
@@ -54,4 +52,3 @@ export default function FeaturedProducts() {
     </section>
   )
 }
-

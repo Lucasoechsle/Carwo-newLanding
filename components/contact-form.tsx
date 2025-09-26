@@ -1,5 +1,4 @@
 "use client"
-
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,11 +12,10 @@ export default function ContactForm() {
     email: "",
     phone: "",
     message: "",
-    type: "cliente", // Por defecto es cliente
+    type: "cliente",
   })
 
   useEffect(() => {
-    // Verificar si hay un tipo en la URL
     const urlParams = new URLSearchParams(window.location.search)
     const tipo = urlParams.get("tipo")
     if (tipo === "vendedor") {
@@ -27,7 +25,6 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica para enviar el formulario
     console.log("Formulario enviado:", formData)
   }
 
@@ -48,7 +45,6 @@ export default function ContactForm() {
               : "Complete el formulario y nos pondremos en contacto con usted a la brevedad"}
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -64,7 +60,6 @@ export default function ContactForm() {
                 placeholder="Su nombre completo"
               />
             </div>
-
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
@@ -79,7 +74,6 @@ export default function ContactForm() {
                 placeholder="su@email.com"
               />
             </div>
-
             <div>
               <label htmlFor="phone" className="block text-sm font-medium mb-2">
                 Teléfono
@@ -93,7 +87,6 @@ export default function ContactForm() {
                 placeholder="+123 456 7890"
               />
             </div>
-
             <div>
               <label htmlFor="message" className="block text-sm font-medium mb-2">
                 Mensaje
@@ -110,12 +103,10 @@ export default function ContactForm() {
                 className="min-h-[150px]"
               />
             </div>
-
             <Button type="submit" size="lg" className="w-full bg-black text-white hover:bg-white hover:text-black">
               Enviar Mensaje
             </Button>
           </form>
-
           <div>
             <Card>
               <CardHeader>
@@ -131,7 +122,6 @@ export default function ContactForm() {
                     <p className="text-muted-foreground">ventas@carwo.com</p>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <Phone className="h-5 w-5 mt-1 text-black" />
                   <div>
@@ -140,7 +130,6 @@ export default function ContactForm() {
                     <p className="text-muted-foreground">+123 456 7891</p>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4">
                   <MapPin className="h-5 w-5 mt-1 text-black" />
                   <div>
@@ -154,7 +143,6 @@ export default function ContactForm() {
                     </p>
                   </div>
                 </div>
-
                 <div className="pt-4">
                   <h3 className="font-medium mb-2">Horario de Atención</h3>
                   <p className="text-muted-foreground">Lunes a Viernes: 9:00 - 18:00</p>
@@ -168,4 +156,3 @@ export default function ContactForm() {
     </section>
   )
 }
-

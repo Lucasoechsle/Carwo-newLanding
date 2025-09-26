@@ -11,7 +11,6 @@ export default function Footer() {
             <h3 className="text-lg font-bold mb-4">CARWO</h3>
             <p className="text-muted-foreground">Soluciones en generación y almacenamiento de energía.</p>
           </div>
-
           <div>
             <h3 className="text-lg font-bold mb-4">Enlaces</h3>
             <ul className="space-y-2">
@@ -37,7 +36,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
           <div>
             <h3 className="text-lg font-bold mb-4">Contacto</h3>
             <address className="not-italic text-muted-foreground">
@@ -46,7 +44,6 @@ export default function Footer() {
             </address>
           </div>
         </div>
-
         <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground max-w-6xl mx-auto">
           <p>© {currentYear} Carwo. Todos los derechos reservados.</p>
         </div>
@@ -54,4 +51,3 @@ export default function Footer() {
     </footer>
   )
 }
-
